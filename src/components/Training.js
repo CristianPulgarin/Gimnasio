@@ -6,6 +6,7 @@ import { FirebaseContext } from "../firebase";
 function Trainig() {
   const { firebase } = useContext(FirebaseContext);
   const [trainings, setTrainings] = useState([]);
+  console.log(trainings)
   const daysOfWeek = [
     "Lunes",
     "Miércoles",

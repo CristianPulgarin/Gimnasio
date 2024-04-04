@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ToniFit from '../img/ToniFit.png'
 import {
-  RiDashboardLine,
-  RiBriefcaseLine,
-  RiMessage2Line,
-  RiArrowDownSLine,
+ 
   RiMenu3Fill,
   RiCloseLine,
 
