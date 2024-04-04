@@ -140,7 +140,7 @@ function Home() {
             <h2 className="bp">Beneficios</h2>
             <ul className="contLp">
             <li className="txtP">
-              los_mejores_ejercicios
+              Mejores
             </li>
             <li className="txtP">
               los_mejores_ejercicios
