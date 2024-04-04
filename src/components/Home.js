@@ -89,12 +89,12 @@ function Home() {
      </div>
      <br></br>
      
-
+     
       <div className="planes">
-      <h1 className="titR">
+      
+      <h1 className="titP">
         PLANES
       </h1>
-        
 
         <div className="contP">
 
@@ -104,10 +104,13 @@ function Home() {
             
             <ul className="contLp">
             <li className="txtP">
-              los_mejores_ejercicios
+              Entrada a las instalaciones
             </li>
             <li className="txtP">
-              los_mejores_ejercicios
+              Acceso a todas las maquinas
+            </li>
+            <li className="txtP">
+              Derecho a un tutor
             </li>
             </ul>
           </div>
@@ -116,46 +119,45 @@ function Home() {
             <h2 className="bp">Beneficios</h2>
             <ul className="contLp">
             <li className="txtP">
-              los_mejores_ejercicios
+              Todos los beneficios del basico
             </li>
             <li className="txtP">
-              los_mejores_ejercicios
+              Acceso a la zona VIP
+            </li>
+            <li className="txtP">
+              Acceso a todas las sedes
+            </li>
+            <li className="txtP">
+              Entrada a un amigo gratis
             </li>
             </ul>
           </div>
           <div className="cajaP">
-            <h1 className="ttp">Plan VIP</h1>
+            <h1 className="ttp">Plan anual VIP</h1>
             <h2 className="bp">Beneficios</h2>
             <ul className="contLp">
             <li className="txtP">
-              los_mejores_ejercicios
+              Ahorras más dinero
             </li>
             <li className="txtP">
-              los_mejores_ejercicios
+              Acceso a la zona VIP
             </li>
+            <li className="txtP">
+              Entrada para un amigo gratis
+            </li>
+            <br></br>
+            <button className="btnP" >Pagar Plan</button>
             </ul>
+            
           </div>
-          <div className="cajaP">
-            <h1 className="ttp">Plan VIP</h1>
-            <h2 className="bp">Beneficios</h2>
-            <ul className="contLp">
-            <li className="txtP">
-              Mejores
-            </li>
-            <li className="txtP">
-              los_mejores_ejercicios
-            </li>
-            </ul>
-          </div>
+          
         </div>
         
       </div>
 
 
 
-<br></br>
-<br></br>
-<br></br>
+
 
 
     </>
