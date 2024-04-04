@@ -1,0 +1,14 @@
+.cont{
+    justify-content: center;
+    display: flex;
+    
+}
+
+.logo{
+    width: 500px;
+    height: 60px;
+}
+
+.bar{
+    margin-top: 20px;
+}
