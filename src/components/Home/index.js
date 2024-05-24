@@ -112,7 +112,14 @@ function Home() {
             <li className="txtP">
               Derecho a un tutor
             </li>
-            <button className="btnP" >Pagar Plan</button>
+            
+            <button className="btnP"><Link
+                  to="/pagar"
+                  
+                >
+                   Pagar
+                </Link>
+                </button> 
             </ul>
           </div>
           <div className="cajaP">
@@ -128,7 +135,14 @@ function Home() {
             <li className="txtP">
               Entrada a un amigo gratis
             </li>
-            <button className="btnP" >Pagar Plan</button>
+            
+            <button className="btnP"><Link
+                  to="/pagar"
+                  
+                >
+                   Pagar
+                </Link>
+                </button>
             </ul>
           </div>
           <div className="cajaP">
