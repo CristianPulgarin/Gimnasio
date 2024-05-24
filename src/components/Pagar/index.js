@@ -1,5 +1,5 @@
 //Importaciones de librerias , componentes y hooks
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 // import * as Yup from "yup";
 
@@ -28,9 +28,13 @@ const [estado,setEstado] = useState(true)
     setEstado(!estado)
   }
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <div>
+      <div id="top"></div>
       <div className="col-span-1">
         <section className="bg-white-50  ">
           <div className=" w-full md:w-1/2 bg-white rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 ">

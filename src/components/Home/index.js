@@ -160,7 +160,7 @@ function Home() {
             </li>
             
             <button className="btnP"><Link
-                  to="/pagar"
+                  to="/pagar#top"
                   
                 >
                    Pagar
