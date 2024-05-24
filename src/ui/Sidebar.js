@@ -29,7 +29,7 @@ function Sidebar() {
           </h1></Link>
         
         </div>
-        <div className="flex flex-col justify-between h-[2000px] ">
+        <div className="navi">
           <nav>
             <ul>
               <li>
@@ -53,7 +53,15 @@ function Sidebar() {
                   to="/training"
                   className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
                 >
-                  Rutinas 
+                  Registrar rutinas
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Dieta"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
+                >
+                  Registrar dietas
                 </Link>
               </li>
               <li>
@@ -64,12 +72,29 @@ function Sidebar() {
                 Asignar rutina
                 </Link>
               </li>
+              
+              <li>
+                <Link
+                  to="/assignDieta"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
+                >
+                Asignar dietas
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/admin"
                   className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
                 >
-                   Usuarios registrados
+                   Bloquear
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/pagar"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
+                >
+                   Pagar
                 </Link>
               </li>
               

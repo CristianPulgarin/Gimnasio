@@ -2,7 +2,7 @@
 import React from "react";
 
 import './Home.css'
-
+import { Link } from "react-router-dom";
 // import Collapse from 'react-bootstrap/Collapse';
 
 
@@ -112,6 +112,7 @@ function Home() {
             <li className="txtP">
               Derecho a un tutor
             </li>
+            <button className="btnP" >Pagar Plan</button>
             </ul>
           </div>
           <div className="cajaP">
@@ -125,11 +126,9 @@ function Home() {
               Acceso a la zona VIP
             </li>
             <li className="txtP">
-              Acceso a todas las sedes
-            </li>
-            <li className="txtP">
               Entrada a un amigo gratis
             </li>
+            <button className="btnP" >Pagar Plan</button>
             </ul>
           </div>
           <div className="cajaP">
@@ -145,8 +144,15 @@ function Home() {
             <li className="txtP">
               Entrada para un amigo gratis
             </li>
-            <br></br>
-            <button className="btnP" >Pagar Plan</button>
+            
+            <button className="btnP"><Link
+                  to="/pagar"
+                  
+                >
+                   Pagar
+                </Link>
+                </button>
+            
             </ul>
             
           </div>
@@ -154,7 +160,6 @@ function Home() {
         </div>
         
       </div>
-
 
 
 

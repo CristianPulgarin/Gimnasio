@@ -1,0 +1,33 @@
+.botonAD{
+    background-color: rgb(240, 82, 82);
+    color: white;
+    font-size: 27px;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.botonAD:hover{
+font-size: 29px;
+}
+
+
+.botonAD2{
+    
+    background-color: rgb(240, 82, 82);
+    color: white;
+    font-size: 22px;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.botonAD2:hover{
+ font-size: 24px;
+}
+
+
+#d{
+    margin-top: 15px;
+}
+

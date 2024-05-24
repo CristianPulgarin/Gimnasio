@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FirebaseContext } from "../firebase";
+import { FirebaseContext } from "../../firebase";
 import Modal from "react-modal";
-
+import './Admin.css'
 const Admin = () => {
   const { firebase } = useContext(FirebaseContext);
   const [users, setUsers] = useState([]);
-  const [classes, setClasses] = useState([]);
-  const [userDailys, setUserDailys] = useState([]);
   const [blockReason, setBlockReason] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -21,20 +19,11 @@ const Admin = () => {
     });
 
     firebase.db.collection("training").onSnapshot((snapshot) => {
-      const classList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setClasses(classList);
+      
     });
 
     firebase.db.collection("assigned").onSnapshot((snapshot) => {
-      const routineList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        userId: doc.data().userId,
-        trainingId: doc.data().trainingId,
-      }));
-      setUserDailys(routineList);
+      
     });
   }, [firebase]);
 
@@ -64,52 +53,27 @@ const Admin = () => {
     <>
       <div className="w-full md:w-1/2 bg-white rounded-lg shadow dark:border xl:p-0 dark:bg-gray-800">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
-            Usuarios Bloqueados
+          <h1 className="text-3xl text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+            BLOQUEO DE USUARIOS
           </h1>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 text-center">
             {users.map((user) => (
               <div key={user.id} className="bg-white p-4 rounded-lg shadow-md">
-                <strong className="block text-lg font-semibold mb-2">
+                <strong className="block text-2xl font-semibold mb-2">
                   Usuario:
                 </strong>
-                <p>{user.name}</p>
-                <p>
-                  <strong>Estado:</strong>{" "}
-                  {user.blocked ? "Bloqueado" : "Desbloqueado"}
+                <p className="text-2xl">{user.name}</p>
+                <p className="text-xl">
+                  
+                  {user.blocked ? (<><p className="bloqueado">Bloqueado</p></>) : (<><p className="desbloqueado">Desbloqueado</p></>)}
                 </p>
                 <button
                   onClick={() => toggleBlockUser(user.id, user.blocked)}
-                  className="bg-yellow-300 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded-md mt-4"
+                  className="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-md mt-4"
                 >
                   {user.blocked ? "Desbloquear" : "Bloquear"}
                 </button>
-                <ul className="mt-4">
-                  {userDailys
-                    .filter((routine) => routine.userId === user.id)
-                    .map((routine) => {
-                      const classInfo = classes.find(
-                        (c) => c.id === routine.trainingId
-                      );
-                      return (
-                        <li key={routine.id} className="mt-2">
-                          <strong>Rutina de Entrenamiento:</strong>
-                          <ul>
-                            <li>
-                              Nombre:
-                              {classInfo.name}
-                            </li>
-                            <li>Categoria: {classInfo.category}</li>
-                            <li>
-                              Hora inicio:
-                              {classInfo.startHour}
-                            </li>
-                            <li>Hora fin:{classInfo.endHour}</li>
-                          </ul>
-                        </li>
-                      );
-                    })}
-                </ul>
+                
               </div>
             ))}
           </div>
@@ -133,7 +97,7 @@ const Admin = () => {
         <div className="mt-2 text-right">
           <button
             onClick={handleBlockUser}
-            className="bg-yellow-400 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-md"
+            className="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-md"
           >
             Confirmar bloqueo
           </button>

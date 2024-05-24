@@ -15,6 +15,9 @@ import Register from "./components/Register";
 import Training from "./components/Training";
 import Assign from "./components/Assign";
 import Admin from "./components/Admin";
+import Pagar from "./components/Pagar";
+import AssignDieta from "./components/AssignDieta";
+import Dieta from "./components/Dieta";
 
 
 function App() {
@@ -33,7 +36,10 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/training" element={<Training />} />
             <Route path="/assign" element={<Assign />} />
+            <Route path="/dieta" element={<Dieta/>}/>
+            <Route path="/assignDieta" element={<AssignDieta />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/pagar" element={<Pagar/>} />
           </Routes>
         </div>
       </div>

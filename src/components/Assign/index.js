@@ -1,7 +1,6 @@
-//importació de librerias y Hooks
 import React, { useState, useEffect, useContext } from "react";
-import { FirebaseContext } from "../firebase";
-
+import { FirebaseContext } from "../../firebase";
+import './Assign.css'
 const Assign = () => {
   const { firebase } = useContext(FirebaseContext);
   const [users, setUsers] = useState([]);
@@ -9,63 +8,78 @@ const Assign = () => {
   const [selectedTraining, setSelectedTraining] = useState("");
   const [selectedUser, setSelectedUser] = useState("");
   const [availableTrainings, setAvailableTrainings] = useState([]);
-
-  const unassignRutina = (assignedTrainingId) => {
-    firebase.db.collection("assigned").doc(assignedTrainingId).update({
-      available: false,
-    });
-    const updatedAssignedTrainings = assignedTrainings.filter(
-      (assignedTraining) => assignedTraining.id !== assignedTrainingId
-    );
-    setAssignedTrainings(updatedAssignedTrainings);
-  };
+  const [assignedTrainings, setAssignedTrainings] = useState([]);
 
   useEffect(() => {
-    firebase.db.collection("users").onSnapshot((snapshot) => {
-      const userList = snapshot.docs.map((doc) => ({
+    const fetchData = async () => {
+      const userSnapshot = await firebase.db.collection("users").get();
+      const userList = userSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setUsers(userList);
-    });
 
-    firebase.db.collection("training").onSnapshot((snapshot) => {
-      const trainingList = snapshot.docs.map((doc) => ({
+      const trainingSnapshot = await firebase.db.collection("training").get();
+      const trainingList = trainingSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setAvailableTrainings(trainingList);
       setClass(trainingList);
-    });
-  }, [firebase]);
 
-  const [assignedTrainings, setAssignedTrainings] = useState([]);
-
-  useEffect(() => {
-    firebase.db.collection("assigned").onSnapshot((snapshot) => {
-      const assignedList = snapshot.docs.map((doc) => ({
+      const assignedSnapshot = await firebase.db.collection("assigned").get();
+      const assignedList = assignedSnapshot.docs.map((doc) => ({
         id: doc.id,
         trainingId: doc.data().trainingId,
         userId: doc.data().userId,
         available: doc.data().available,
       }));
       setAssignedTrainings(assignedList);
-    });
+    };
+
+    fetchData();
   }, [firebase]);
 
-  const assignRutina = () => {
+  const assignRutina = async () => {
     if (!selectedUser || !selectedTraining) {
       window.alert("Selecciona un usuario y un horario de entrenamiento.");
       return;
     }
-    firebase.db.collection("assigned").add({
+
+    await firebase.db.collection("assigned").add({
       userId: selectedUser,
       trainingId: selectedTraining,
       available: true,
     });
-    window.alert("Entrenamiento asignada correctamente.");
+
+    const assignedSnapshot = await firebase.db.collection("assigned").get();
+    const assignedList = assignedSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      trainingId: doc.data().trainingId,
+      userId: doc.data().userId,
+      available: doc.data().available,
+    }));
+    setAssignedTrainings(assignedList);
+
+    // Eliminar el usuario asignado de la lista desplegable
+    const updatedUsers = users.filter((user) => user.id !== selectedUser);
+    setUsers(updatedUsers);
+
+    window.alert("Entrenamiento asignado correctamente.");
     setSelectedUser("");
     setSelectedTraining("");
+  };
+
+
+  const unassignRutina = async (assignedTrainingId) => {
+    await firebase.db.collection("assigned").doc(assignedTrainingId).update({
+      available: false,
+    });
+
+    const updatedAssignedTrainings = assignedTrainings.filter(
+      (assignedTraining) => assignedTraining.id !== assignedTrainingId
+    );
+    setAssignedTrainings(updatedAssignedTrainings);
   };
 
   const availableOptions = availableTrainings
@@ -85,21 +99,22 @@ const Assign = () => {
     <>
       <div className="flex flex-col ">
         <div className="bg-white p-0 rounded-lg shadow-md mt-2">
-          <h2 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900  dark:text-white h-10 ">
-            Asignar rutinas
+          <h2 className="text-3xl text-center  font-bold leading-tight tracking-tight text-gray-900 dark:text-white h-10">
+            ASIGNAR RUTINAS
           </h2>
           <div className="space-y-4">
             <div>
               <label
                 htmlFor="user"
-                className="block font-bold text-gray-700 text-center"
+                id="u"
+                className="text-xl block font-bold  text-center"
               >
                 Datos del Usuario
               </label>
               <div className="flex justify-center items-center">
                 <select
                   id="user"
-                  className="bg-white py-2 pl-8 pr-4 outline-none w-1500 rounded"
+                  className="bg-white py-2 pl-8 pr-4 outline-none w-1000 rounded"
                   value={selectedUser}
                   onChange={(e) => setSelectedUser(e.target.value)}
                 >
@@ -117,14 +132,14 @@ const Assign = () => {
             <div>
               <label
                 htmlFor="training"
-                className="block font-bold text-gray-700 text-center"
+                className="text-xl block font-bold  text-center"
               >
                 Entrenamientos y horarios disponibles
               </label>
               <div className="flex justify-center items-center">
                 <select
                   id="training"
-                  className="bg-white py-2 pl-8 pr-4 outline-none w-1500 rounded"
+                  className="bg-white py-2 pl-8 pr-4 outline-none w-1000 rounded"
                   value={selectedTraining}
                   onChange={(e) => setSelectedTraining(e.target.value)}
                 >
@@ -135,8 +150,8 @@ const Assign = () => {
             </div>
             <div className="flex justify-center items-center h-20">
               <button
-                 onClick={assignRutina}
-                className="bg-yellow-400 hover-bg-yellow-600 text-white font-bold py-2 px-4 rounded-md"
+                onClick={assignRutina}
+                className="botonAR"
               >
                 Asignar Entrenamiento
               </button>
@@ -144,66 +159,49 @@ const Assign = () => {
           </div>
         </div>
         <div className="bg-white p-8 rounded-lg shadow-md mt-4">
-          <h2 className="text-1xl font-bold text-gray-700 text-center">
+          <h2 className="text-2xl uppercase font-bold text-gray-700 text-center">
             Clases asignadas
           </h2>
           <div className="space-y-4">
-            {assignedTrainings.map((assignedTraining) => (
-              <div key={assignedTraining.id}>
-                {assignedTraining.available ? (
-                  <div className="border rounded-md p-4">
+            {assignedTrainings.map((assignedTraining) => {
+              const assignedClass = classs.find(
+                (clas) => clas.id === assignedTraining.trainingId
+              );
+              const assignedUser = users.find(
+                (user) => user.id === assignedTraining.userId
+              );
+
+              if (assignedTraining.available && assignedClass && assignedUser) {
+                return (
+                  <div key={assignedTraining.id} className="border rounded-md p-4">
                     <h3 className="text-md font-semibold">
-                      Nombre del Entrenamiento Asignado:
-                      {
-                        classs.find(
-                          (clas) => clas.id === assignedTraining.trainingId
-                        ).name
-                      }
+                      Nombre del Entrenamiento Asignado: {assignedClass.name}
                     </h3>
                     <p>
-                      <strong>Cliente:</strong>
-                      {
-                        users.find(
-                          (user) => user.id === assignedTraining.userId
-                        ).name
-                      }
+                      <strong>Cliente:</strong> {assignedUser.name}
                     </p>
                     <p>
-                      <strong>Categoria del entrenamiento:</strong>
-                      {
-                        classs.find(
-                          (clas) => clas.id === assignedTraining.trainingId
-                        ).category
-                      }
+                      <strong>Categoria del entrenamiento:</strong> {assignedClass.category}
                     </p>
                     <p>
-                      <strong>Hora de inicio:</strong>
-                      {
-                        classs.find(
-                          (clas) => clas.id === assignedTraining.trainingId
-                        ).startHour
-                      }
+                      <strong>Hora de inicio:</strong> {assignedClass.startHour}
                     </p>
                     <p>
-                      <strong>Día:</strong>
-                      {
-                        classs.find(
-                          (clas) => clas.id === assignedTraining.trainingId
-                        ).day
-                      }
+                      <strong>Día:</strong> {assignedClass.day}
                     </p>
-                    <div className=" mt-2">
+                    <div className="mt-2">
                       <button
                         onClick={() => unassignRutina(assignedTraining.id)}
-                        className="bg-yellow-400 hover-bg-yellow-600 text-white font-bold py-2 px-4 rounded-md"
+                        className="botonAR2"
                       >
                         Cancelar clase del cliente
                       </button>
                     </div>
                   </div>
-                ) : null}
-              </div>
-            ))}
+                );
+              }
+              return null;
+            })}
           </div>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 // import * as Yup from "yup";
-import { FirebaseContext } from "../firebase";
+import './Training.css'
+import { FirebaseContext } from "../../firebase";
 
 function Trainig() {
   const { firebase } = useContext(FirebaseContext);
@@ -9,11 +10,11 @@ function Trainig() {
   console.log(trainings)
   const daysOfWeek = [
     "Lunes",
-    "Miércoles",
-    "Sábado",
     "Martes",
+    "Miércoles",
     "Jueves",
     "Viernes",
+    "Sábado",
   ];
 
   const formik = useFormik({
@@ -25,17 +26,6 @@ function Trainig() {
       startHour: "",
     },
 
-    // validationSchema: Yup.object({
-    //   name: Yup.string()
-    //     .min(4, "El nombre debe tener mínimo 4 caracteres")
-    //     .required("El nombre es requerido"),
-    //   description: Yup.string()
-    //     .min(10, "La descripción debe tener mínimo 10 caracteres")
-    //     .required("La descripción es requerida"),
-    //   category: Yup.string().required("Selecciona una categoría"),
-    //   day: Yup.string().required("El día es requerido"),
-    //   startHour: Yup.string().required("La hora de inicio es requerida"),
-    // }),
 
     onSubmit: async (values) => {
       try {
@@ -81,8 +71,8 @@ function Trainig() {
             <div className="flex flex-col  items-center justify-center h-screen">
               <div className=" w-full md:w-1/2 bg-white rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 ">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                  <h1 className="text-xl text-center  font-bold leading-tight tracking-tight text-gray-900  dark:text-white">
-                    Rutinas para los usuarios 
+                  <h1 className="text-3xl text-center  font-bold leading-tight tracking-tight text-gray-900  dark:text-white">
+                    RUTINAS
                   </h1>
                   <form
                     className="space-y-4 md:space-y-6"
@@ -91,7 +81,7 @@ function Trainig() {
                     <div className="mb-6">
                       <label
                         htmlFor="name"
-                        className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                        className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
                       >
                         Nombre de la rutina
                       </label>
@@ -109,16 +99,12 @@ function Trainig() {
                         />
                       
                     </div>
-                    {/* {formik.touched.name && formik.errors.name ? (
-                      <div className="text-red-500 font-bold">
-                        {formik.errors.name}
-                      </div>
-                    ) : null} */}
+                  
 
                     <div className="mb-6">
                       <label
                         htmlFor="description"
-                        className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                        className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
                       >
                         Descripción de la rutina
                       </label>
@@ -135,16 +121,12 @@ function Trainig() {
                         />
                       
                     </div>
-                    {/* {formik.touched.description && formik.errors.description ? (
-                      <div className="text-red-500 font-bold">
-                        {formik.errors.description}
-                      </div>
-                    ) : null} */}
+                 
 
                     <div className="mb-6">
                       <label
                         htmlFor="category"
-                        className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                        className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
                       >
                         Categoría de la rutina
                       </label>
@@ -167,15 +149,11 @@ function Trainig() {
                         </select>
                       
                     </div>
-                    {/* {formik.touched.category && formik.errors.category ? (
-                      <div className="text-red-500 font-bold">
-                        {formik.errors.category}
-                      </div>
-                    ) : null} */}
+                   
                     <div className="mb-4">
                       <label
                         htmlFor="day"
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-gray-700 text-xl font-bold mb-2"
                       >
                         Horarios disponibles para asignar rutina
                       </label>
@@ -195,16 +173,12 @@ function Trainig() {
                           </option>
                         ))}
                       </select>
-                      {/* {formik.touched.day && formik.errors.day ? (
-                        <div className="text-red-500 font-bold">
-                          {formik.errors.day}
-                        </div>
-                      ) : null} */}
+                    
                     </div>
                     <div className="mb-4">
                       <label
                         htmlFor="startHour"
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-gray-700 text-xl font-bold mb-2"
                       >
                         Hora de Inicio
                       </label>
@@ -229,15 +203,11 @@ function Trainig() {
                         <option value="8:00 PM">8:00 PM</option>
                       </select>
                     </div>
-                    {/* {formik.touched.startHour && formik.errors.startHour ? (
-                      <div className="text-red-500 font-bold">
-                        {formik.errors.startHour}
-                      </div>
-                    ) : null} */}
-                  <div className="justify-center items-center flex">
+                   
+                  <div className="contBtnRT">
                     <button
                       type="submit"
-                      className=" text-white bg-yellow-400 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="btnRT"
                     >
                       Crear rutina
                     </button>
@@ -250,39 +220,7 @@ function Trainig() {
         </div>
       </div>
 
-      {/* <div className="w-full px-4 bg-white">
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
-          {trainings.map((training) => (
-            <div
-              className="w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300"
-              key={training.id}
-            >
-              <div
-                key={training.id}
-                className="bg-white p-4 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 relative"
-              >
-                <h2 className="text-xl font-semibold mb-2 relative z-10">
-                  {training.name}
-                </h2>
-                <p className="text-gray-600 relative z-10">
-                  {training.description}
-                </p>
-                <div className="mt-4">
-                  <h3 className="text-lg font-semibold">
-                    Paquete de Horaios Asignados:
-                  </h3>
-                  <ul className="mt-2">
-                    <li className="mb-2">
-                      <strong>{training.day}</strong> - {training.startHour} 
-                      {training.endHour} <br/>Fecha Inicio: Noviembre 1 del 2023
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      
     </>
   );
 }

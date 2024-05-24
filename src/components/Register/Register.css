@@ -1,0 +1,35 @@
+.contbt{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(240, 82, 82);
+    width: 20%;
+    border-radius: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    
+    box-shadow: rgb(71, 71, 71) 8px 10px 10px;
+}
+
+.contbt:hover{
+    width: 22%;
+}
+
+.btnRegistrar{
+    font-size: 30px;
+    
+}
+
+.btnRegistrar:hover{
+
+    font-size: 32px;
+
+        
+}
+    
+    
+
+
+
+
+

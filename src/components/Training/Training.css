@@ -1,0 +1,26 @@
+.contBtnRT{
+    background-color: rgb(240, 82, 82);
+    text-align: center;
+    width: 20%;
+    border-radius: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    box-shadow: rgb(71, 71, 71) 8px 10px 10px;
+}
+
+.contBtnRT:hover{
+    width: 22%;
+}
+
+.btnRT{
+    font-size: 30px;
+    
+}
+
+.btnRT:hover{
+font-size: 32px;
+
+        
+}
