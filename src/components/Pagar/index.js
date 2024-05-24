@@ -12,9 +12,9 @@ const [estado,setEstado] = useState(true)
   
   const formik = useFormik({
     initialValues: {
-      cuenta: '',
-      nombre: '',
-      plan: ''
+      cuenta: "",
+      nombre: "",
+      plan: "",
     },
 
     
@@ -92,10 +92,9 @@ const [estado,setEstado] = useState(true)
                   >
                     Plan
                   </label>
-
                   <input
                     type="text"
-                    id="tipo"
+                    id="plan"
                     className="bg-white py-2 pl-8 pr-4 outline-none w-full rounded"
                     required
                     value={formik.values.plan}
