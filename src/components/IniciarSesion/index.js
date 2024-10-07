@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { useFormik } from "formik";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore"; // Firestore
 import { useNavigate } from "react-router-dom"; // Para redirigir
@@ -9,7 +9,7 @@ function IniciarSesion() {
   const navigate = useNavigate(); // Hook para redirigir
   const [loginError, setLoginError] = useState(""); // Para manejar errores de autenticación
   const [userRole, setUserRole] = useState(null); // Para almacenar el rol del usuario
-
+console.log(userRole)
   // Inicialización del formulario con Formik
   const formik = useFormik({
     initialValues: {
