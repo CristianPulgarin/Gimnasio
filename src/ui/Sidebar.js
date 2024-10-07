@@ -42,6 +42,14 @@ function Sidebar() {
               </li>
               <li>
                 <Link
+                  to="/IniciarSesion"
+                  className="bar flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
+                >
+                  Iniciar sesion
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/register"
                   className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-400 hover:text-white rounded-lg transition-colors font-semibold"
                 >

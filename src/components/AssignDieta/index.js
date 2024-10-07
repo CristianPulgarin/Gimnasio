@@ -139,7 +139,7 @@ const AssignDieta = () => {
                  onClick={assignDieta}
                 className="botonAD"
               >
-                Asignar Entrenamiento
+                Asignar dieta
               </button>
             </div>
           </div>

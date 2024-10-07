@@ -22,8 +22,9 @@ function Trainig() {
       name: "",
       description: "",
       category: "",
+      guia: "",
       day: "",
-      startHour: "",
+      startHour: "8:00 AM",
     },
 
 
@@ -33,6 +34,7 @@ function Trainig() {
           name: values.name,
           description: values.description,
           category: values.category,
+          guia: values.guia,
           day: values.day,
           startHour: values.startHour,
         };
@@ -128,7 +130,7 @@ function Trainig() {
                         htmlFor="category"
                         className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
                       >
-                        Categoría de la rutina
+                        Tipo de ejercicio
                       </label>
                       
                         <select
@@ -146,6 +148,33 @@ function Trainig() {
                           <option value="Brazos">Brazos</option>
                           <option value="Abdomen">Abdomen</option>
                           <option value="Pecho">Pecho</option>
+                        </select>
+                      
+                    </div>
+
+                    <div className="mb-6">
+                      <label
+                        htmlFor="guia"
+                        className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
+                      >
+                        Link guia
+                      </label>
+                      
+                        <select
+                          id="guia"
+                          name="guia"
+                          required
+                          value={formik.values.guia}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          className="bg-white py-2 pl-8 pr-4 outline-none w-full rounded"
+                        >
+                          <option value="">Selecciona la guia</option>
+                          <option value="#">#</option>
+                          <option value="#">#</option>
+                          <option value="#">#</option>
+                          <option value="#">#</option>
+                          <option value="#">#</option>
                         </select>
                       
                     </div>

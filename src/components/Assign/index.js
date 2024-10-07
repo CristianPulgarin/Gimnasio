@@ -189,6 +189,9 @@ const Assign = () => {
                     <p>
                       <strong>Día:</strong> {assignedClass.day}
                     </p>
+                    <p>
+                      <strong>Guia:</strong> {assignedClass.guia}
+                    </p>
                     <div className="mt-2">
                       <button
                         onClick={() => unassignRutina(assignedTraining.id)}

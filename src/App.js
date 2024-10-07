@@ -18,7 +18,7 @@ import Admin from "./components/Admin";
 import Pagar from "./components/Pagar";
 import AssignDieta from "./components/AssignDieta";
 import Dieta from "./components/Dieta";
-
+import IniciarSesion from "./components/IniciarSesion";
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/iniciarSesion" element={<IniciarSesion />} />
             <Route path="/register" element={<Register />} />
             <Route path="/training" element={<Training />} />
             <Route path="/assign" element={<Assign />} />

@@ -93,6 +93,7 @@ function Home() {
       <div className="planes">
       
       <h1 className="titP">
+        
         PLANES
       </h1>
 
@@ -117,7 +118,7 @@ function Home() {
                   to="/pagar"
                   
                 >
-                   Pagar
+                   PAGAR
                 </Link>
                 </button> 
             </ul>
@@ -140,7 +141,7 @@ function Home() {
                   to="/pagar"
                   
                 >
-                   Pagar
+                   PAGAR
                 </Link>
                 </button>
             </ul>
@@ -163,7 +164,7 @@ function Home() {
                   to="/pagar#top"
                   
                 >
-                   Pagar
+                   PAGAR
                 </Link>
                 </button>
             

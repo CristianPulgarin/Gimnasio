@@ -53,7 +53,7 @@ function Dieta() {
                     htmlFor="cc"
                     className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
                   >
-                    Dieta
+                    Nombre de la dieta
                   </label>
 
 

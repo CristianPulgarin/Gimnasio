@@ -14,9 +14,12 @@ function Register() {
     initialValues: {
       name: "",
       cc: "",
+      edad: "",
+      estatura: "",
       userName: "",
       email: "",
       password: "",
+      rol: "",
       blocked: false,
 
 
@@ -126,6 +129,46 @@ function Register() {
                   />
 
                 </div>
+
+                <div className="mb-6">
+                  <label
+                    htmlFor="userName"
+                    className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
+                  >
+                    Edad
+                  </label>
+
+                  <input
+                    type="number"
+                    id="edad"
+                    className="bg-white py-2 pl-8 pr-4 outline-none w-full rounded"
+                    required
+                    value={formik.values.edad}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+
+                </div>
+
+                <div className="mb-6">
+                  <label
+                    htmlFor="estatura"
+                    className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
+                  >
+                    Estatura
+                  </label>
+
+                  <input
+                    type="number"
+                    id="estatura"
+                    className="bg-white py-2 pl-8 pr-4 outline-none w-full rounded"
+                    required
+                    value={formik.values.estatura}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+
+                </div>
                 <div className="mb-6">
                   <label
                     htmlFor="email"
@@ -164,11 +207,45 @@ function Register() {
                     onBlur={formik.handleBlur}
                   />
 
+<div className="mb-6">
+                  <label
+                    htmlFor="rol"
+                    className="block mb-2 text-xl font-bold text-gray-700 dark:text-white"
+                  >
+                    Rol
+                  </label>
+
+                <label htmlFor="rol">Selecciona tu rol:</label>
+                      <select
+                        id="rol"
+                        className="mb-4 bg-white py-2 pl-2 pr-4 outline-none rounded"
+                        value={formik.values.rol}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      >
+                        <option value="usuario">Usuario</option>
+                        <option value="entrenador">Entrenador</option>
+                      </select>
+                  
+
+                </div>
+                  
+
                 </div>
                 <div className="contbt">
                   <button
                     type="submit"
                     className="btnRegistrar"
+                    onClick={(e) => {
+                      e.preventDefault(); // Evita el envío inmediato del formulario
+                
+                      // Validar si la edad es menor a 10
+                      if (formik.values.edad < 10 || formik.values.password.length<6 ){
+                        alert('La edad debe ser menor a 10 y la clave debe tener mas de 6 digitos');
+                      } else {
+                        formik.handleSubmit(); // Proceder con el envío si la edad es válida
+                      }
+                    }}
                   >
                     Crear cuenta
                   </button>
